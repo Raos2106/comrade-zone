@@ -23,6 +23,11 @@ body {
     background-color: #080202;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+}
+
+.header-hidden {
+    transform: translateY(-100%);
 }
 
 .navbar {
@@ -124,14 +129,46 @@ p {
 }
 
 .floating-tab {
-    width: 35%;
-    height: 400px;
+    width: 100%;
+    height: 600px;
     position: relative;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease;
     margin-bottom: 20px;
+}
+
+.main-tab {
+    width: 100%;
+    height: 700px;
+    position: relative;
+    background-image: url('7510lpr-816x545.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+}
+
+.main-tab .tab-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+}
+
+.main-tab h1 {
+    font-size: 120px;
+    margin-bottom: 20px;
+}
+
+.main-tab h2 {
+    font-size: 60px;
+    margin-top: 0;
 }
 
 .floating-tab:hover {
@@ -157,7 +194,7 @@ p {
 
 .tab-overlay h3 {
     margin: 0;
-    font-size: 18px;
+    font-size: 30px;
     font-weight: bold;
 }
 
