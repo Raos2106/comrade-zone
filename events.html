@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="cafe.css">
+    <link rel="stylesheet" href="events.css">
+    <title>Events</title>
+</head>
+<body>
+    <div id="header">
+        <header class="header">
+            <nav class="navbar">
+                <ul class="nav-link">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="post_event.html">Post Event</a></li>
+                    <li><a href="listing.html">Housing</a></li>
+                    <li><a href="ngl.html">Community</a></li>
+                    <li><a href="conf.html">Confessions</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+    <div class="events-container" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+        <h2 style="width: 100%;">Posted Events</h2>
+        <div id="eventsList" style="display: flex; flex-wrap: wrap; gap: 20px;"></div>
+    </div>
+    <script>
+        // Sample data for demonstration
+        const events = JSON.parse(localStorage.getItem('events')) || [];
+        const eventsList = document.getElementById('eventsList');
+
+        if (events.length === 0) {
+            eventsList.innerHTML = '<p>No events posted yet.</p>';
+        } else {
+            events.forEach(event => {
+                const eventItem = document.createElement('div');
+                eventItem.className = 'event-item'; // Use CSS class for styling
+                eventItem.innerHTML = `
+                <div style="position: relative; width: 100%; height: 100%;">
+                    <img src="${event.image}" alt="${event.title}" style="width: 100%; height: 100%; border-radius: 5px; display: block;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; color: white; text-shadow: 1px 1px 2px black; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                    <div class="event-info"> <!-- Use CSS class for styling -->
+                        <h3>${event.title}</h3>
+                        <p>Location: ${event.location}</p>
+                        <p>Time: ${event.time}</p>
+                        <p>Date: ${event.date}</p>
+                        <p>Details: ${event.details}</p>
+                    </div>
+                    </div>
+
+                    </div>
+                </div>
+
+                `;
+                eventsList.appendChild(eventItem);
+            });
+        }
+    </script>
+</body>
+</html>

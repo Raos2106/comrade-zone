@@ -1,0 +1,66 @@
+/* events.css */
+
+/* General styles for the events container */
+.events-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Styles for individual event items */
+.event-item {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    width: calc(25% - 20px); /* Four items per row */
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* Styles for the event image */
+.event-item img {
+    width: 100%;
+    height: auto; /* Change to auto for better aspect ratio */
+    border-radius: 5px;
+    display: block;
+}
+
+/* Styles for the overlay text */
+.event-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+/* Styles for the event title */
+.event-info h3 {
+    font-size: 1.2em;
+}
+
+/* Styles for the event details */
+.event-info p {
+    font-size: 0.9em;
+    margin: 0;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .event-item {
+        width: calc(50% - 20px); /* Two items per row on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .event-item {
+        width: 100%; /* One item per row on very small screens */
+    }
+}
