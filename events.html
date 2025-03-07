@@ -11,7 +11,7 @@
             <nav class="navbar">
                 <ul class="nav-link">
                     <li><a href="#home">Home</a></li>
-                    <li><a href="post_event.html">Post Event</a></li>
+                    <li><a href="postevents.html">Post Event</a></li>
                     <li><a href="listing.html">Housing</a></li>
                     <li><a href="ngl.html">Community</a></li>
                     <li><a href="conf.html">Confessions</a></li>
@@ -35,15 +35,15 @@
                 const eventItem = document.createElement('div');
                 eventItem.className = 'event-item'; // Use CSS class for styling
                 eventItem.innerHTML = `
-                <div style="position: relative; width: 100%; height: 100%;">
-                    <img src="${event.image}" alt="${event.title}" style="width: 100%; height: 100%; border-radius: 5px; display: block;">
+                <div  class="relative w-96 p-4 bg-white rounded-lg shadow-lg">
+                    <img src="${event.image}" alt="${event.title}" class="absolute -top-10 left-4 w-20 h-20 rounded-full border-2 border-white shadow-lg">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; color: white; text-shadow: 1px 1px 2px black; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                    <div class="event-info"> <!-- Use CSS class for styling -->
-                        <h3>${event.title}</h3>
-                        <p>Location: ${event.location}</p>
-                        <p>Time: ${event.time}</p>
-                        <p>Date: ${event.date}</p>
-                        <p>Details: ${event.details}</p>
+                    <div class="event-info" class="pl-24"> <!-- Use CSS class for styling -->
+                        <h3 class="text-lg font-bold">${event.title}</h3>
+                        <p class="text-gray-600">Location: ${event.location}</p>
+                        <p class="text-gray-600">Time: ${event.time}</p>
+                        <p class="text-gray-600">Date: ${event.date}</p>
+                        <p class="text-gray-600">Details: ${event.details}</p>
                     </div>
                     </div>
 

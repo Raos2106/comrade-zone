@@ -1,3 +1,19 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.event-tabs {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.event-tab {
+    width: 30%;
+    margin: 1%;
+    background-color: #1b0b0b;
+    border-radius: 5px;
+    overflow: hidden;
+}
 /* events.css */
 
 /* General styles for the events container */
@@ -15,29 +31,26 @@
     width: calc(25% - 20px); /* Four items per row */
     box-sizing: border-box;
     position: relative;
+    float: left; /* Make the event item float */
 }
 
 /* Styles for the event image */
-.event-item img {
+.event-image {
     width: 100%;
-    height: auto; /* Change to auto for better aspect ratio */
+    height: auto; /* Maintain aspect ratio */
     border-radius: 5px;
     display: block;
+    float: left; /* Make the image float */
 }
 
 /* Styles for the overlay text */
 .event-info {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    position: relative; /* Change to relative for proper layout */
     color: white;
     text-shadow: 1px 1px 2px black;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    justify-content: flex-start; /* Align items to the start */
     padding: 10px;
 }
 

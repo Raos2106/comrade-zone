@@ -1,75 +1,55 @@
-// JavaScript for Comrade Zone website
+// Add timestamp styles
+const style = document.createElement('style');
+style.textContent = `
+    .timestamp {
+        font-size: 0.1em;
+        color: #666;
+        text-align: right;
+        margin-top: 5px;
+    }
+`;
+document.head.appendChild(style);
 
-// Confession Handling
-const CONFESSIONS_KEY = 'comrade_confessions';
+// Handle confession form submission and display
+document.addEventListener('DOMContentLoaded', function() {
+    // Form submission handling
+    const form = document.getElementById('confessionForm');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const textarea = document.getElementById('confessionText');
+            const confession = textarea.value.trim();
+            
+            if (confession) {
+                // Save confession
+                const confessions = JSON.parse(localStorage.getItem('confessions')) || [];
+                confessions.push({
+                    text: confession,
+                    timestamp: new Date().toLocaleString()
+                });
+                localStorage.setItem('confessions', JSON.stringify(confessions));
+                
+                // Redirect to conf.html
+                window.location.href = 'conf.html';
+            } else {
+                alert('Please write a confession before submitting!');
+            }
+        });
+    }
 
-function saveConfession(confession) {
-    const confessions = getConfessions();
-    confessions.push({
-        text: confession,
-        timestamp: new Date().toLocaleString()
-    });
-    localStorage.setItem(CONFESSIONS_KEY, JSON.stringify(confessions));
-}
-
-function getConfessions() {
-    return JSON.parse(localStorage.getItem(CONFESSIONS_KEY)) || [];
-}
-
-function displayConfessions() {
+    // Display recent confessions
     const confessionsList = document.querySelector('.confessions-list');
     if (confessionsList) {
-        confessionsList.innerHTML = getConfessions()
-            .map(conf => `<div class="confession-item">${conf.text}<br><small>${conf.timestamp}</small></div>`)
+        const confessions = JSON.parse(localStorage.getItem('confessions')) || [];
+        confessionsList.innerHTML = confessions
+            .slice(-100) // Show last 100 confessions
+            .reverse() // Show most recent first
+            .map(conf => `
+                <div class="confession-item">
+                    ${conf.text}
+                    <div class="timestamp">${conf.timestamp}</div>
+                </div>
+            `)
             .join('');
     }
-}
-
-// Handle confession form submission
-const confessionForm = document.getElementById('confessionForm');
-if (confessionForm) {
-    confessionForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const confessionText = document.getElementById('confessionText').value.trim();
-        if (confessionText) {
-            saveConfession(confessionText);
-            // Force reload to ensure confessions are displayed
-            window.location.href = 'conf.html';
-            window.location.reload();
-        } else {
-            alert('Please write a confession before submitting!');
-        }
-    });
-}
-
-// Header scroll behavior
-let lastScroll = 0;
-const header = document.querySelector('.header');
-const scrollThreshold = 100; // Pixels to scroll before hiding header
-
-// Display confessions when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    displayConfessions();
-});
-
-window.addEventListener('scroll', function() {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll <= 0) {
-        // At top of page, show header
-        header.classList.remove('header-hidden');
-        return;
-    }
-
-    if (currentScroll > lastScroll && !header.classList.contains('header-hidden')) {
-        // Scrolling down
-        if (currentScroll > scrollThreshold) {
-            header.classList.add('header-hidden');
-        }
-    } else if (currentScroll < lastScroll && header.classList.contains('header-hidden')) {
-        // Scrolling up
-        header.classList.remove('header-hidden');
-    }
-    
-    lastScroll = currentScroll;
 });

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="postevents.css" ><link<!DOCTYPE html>
+    <html>
+    <head>
+        <link rel="stylesheet" href="cafe.css">
+
+        <title> PostEvents</title>
+    </head>
+    <body>
+        <div id="header">
+            <header class="header">
+                <nav class="navbar">
+                    <ul class="nav-link">
+                        <li><a href="back.html">Home</a></li>
+                        <li><a href="listing.html">Housing</a></li>
+                        <li><a href="ngl.html">Community</a></li>
+                        <li><a href="conf.html">Confessions</a></li>
+                    </ul>
+                </nav>
+            </header>
+        </div>
+
+    <title>Post Events</title>
+</head>
+<body>
+    <form id="event-form">
+        <label for="event-title">Event Title:</label>
+        <input type="text" id="event-title" name="event-title" required>
+        
+        <label for="event-location">Location:</label>
+        <input type="text" id="event-location" name="event-location" required>
+        
+        <label for="event-time">Time:</label>
+        <input type="time" id="event-time" name="event-time" required>
+        
+        <label for="event-date">Date:</label>
+        <input type="date" id="event-date" name="event-date" required>
+        
+        <label for="event-details">Details:</label>
+        <textarea id="event-details" name="event-details" required></textarea>
+        <input type="file" id="event-image" name="event-image" accept="image/*" required>
+        
+        <button type="submit">Submit Event</button>
+    </form>
+    <script src="script2.js"></script>
+    <script src="script1.js"></script>
+</body>
+</html>
